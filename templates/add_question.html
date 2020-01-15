@@ -1,0 +1,70 @@
+{% extends 'menu.html' %}
+{% block content %}
+	<div class="container">
+		<center><h1>Add Question</h1></center><br>
+		<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			{% for message in messages %}
+			  	<div class="alert alert-{{message.tags}} alert-dismissable" role="alert">
+				 	<button type="button" class="close" data.dismissable="alert" aria-label="close">
+			   		<span aria-hidden="true">&times;</span>	
+			   		</button>
+			{{ message }}
+			    </div>	
+			{% endfor %}
+
+			<form method="POST" action="{% url 'add_question_data' %}">
+
+				{% csrf_token %}
+
+				<div class="form-group">
+					<label>Question:</label>
+					<input type="text" name="question" class="form-control">
+				</div>
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label>Option 1:</label>
+						<input type="text" name="choice1" class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label>Option 2:</label>
+						<input type="text" name="choice2" class="form-control">
+					</div>
+				</div>
+				<div class="row">	
+					<div class="form-group col-md-6">
+						<label>Option 3:</label>
+						<input type="text" name="choice3" class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label>Option 4:</label>
+						<input type="text" name="choice4" class="form-control">
+					</div>					
+				</div>
+				<div class="row">
+					<div class="form-group col-md-6 ">
+						<label>Correct Answer</label>
+						<!--<input type="text" name="answer" class="form-control">-->	
+						<select class="form-control" name="right_answer">
+							<option value=" ">Select Option</option>
+							<option value="1">Option 1</option>	
+							<option value="2">Option 2</option>	
+							<option value="3">Option 3</option>	
+							<option value="4">Option 4</option>	
+			
+						</select>		
+						
+					</div>
+				</div>	
+				
+					<div class="form-group col-md-3">
+						<button type="submit" class="btn btn-info" style="width:225px;">Add Question</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-md-3"></div>
+		</div>
+	</div>
+{% endblock %}	

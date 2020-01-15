@@ -1,0 +1,51 @@
+{% extends 'menu.html' %}
+{% block content %}
+<table>    
+<tr >
+        <td><strong></strong></td>
+        <td><strong></strong></td>
+    </tr> 
+        {% for question_data in post_data %}
+
+    <tr >
+        <td><strong>Question {{forloop.counter}}:</strong></td>
+        <td><strong>{{question_data.questions}}</strong></td>
+    </tr> 
+  
+    <tr>
+        <td><strong>Option 1:</strong></td>
+        <td>{{question_data.choice1}}</td>
+    </tr>
+
+    <tr>
+        <td><strong>Option 2:</strong></td>
+        <td>{{question_data.choice2}}</td>
+    </tr>
+
+    <tr>
+        <td><strong>Option 3:</strong></td>
+        <td>{{question_data.choice3}}</td>
+    </tr>
+
+    <tr>
+        <td><strong>Option 4:</strong></td>
+        <td >{{question_data.choice4}}</td>
+    </tr>
+
+    <tr>
+        <td><strong>Right Answer:</strong></td>
+        <td ><span class="badge badge-success">{{question_data.correct_answer}}</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>User Answer:</strong></td>
+                           
+
+        <td><span class="badge badge-secondary">{{question_data.your_answer}}</span></td>
+
+    </tr>
+
+
+{% endfor %}
+</table>
+{% endblock %}

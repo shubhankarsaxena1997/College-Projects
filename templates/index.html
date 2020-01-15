@@ -1,0 +1,53 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+	<style type="text/css">
+		body{
+			background-image: url({% static 'images/pic9.jpeg' %});
+			background-size: cover;
+		}
+		.a{
+			padding-left: 320px;
+			margin:auto;
+			margin-top: 200px;
+		}
+		.login{
+			height: 40px;
+			width: 550px;
+			background-color: tomato;
+			margin-left: 50px;
+			border-radius: 5px;
+			margin-top: 20px;
+			padding-top: 10px;
+
+		}
+		.register{
+			height: 40px;
+			width: 550px;
+			background-color: mediumseagreen;
+			margin-left: 50px;
+			border-radius: 5px;
+			margin-top: 10px;
+			padding-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="a">
+
+		<h1 style="color: white;margin-left: 150px;padding-top: 20px;font-family: sans-serif;">Online Quiz Management</h1>
+
+		<h4 style="color: white; margin-left: 145px;font-family: sans-serif;">Create your account.It's free and only takes a minute</h4>
+
+			<div class="login"><a href="login" style="font-family: sans-serif;margin-left: 250px; text-decoration: none;color: white">Login</a>
+			</div>
+
+			<div class="register"><a href="register" style="font-family: sans-serif;margin-left:	 230px; text-decoration: none;color: white">Register Now</a>
+				
+			</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style type="text/css" >
+  body{
+    background-image: url({% static 'images/pic6.jpeg' %});
+    background-size: cover;
+  }
+  #color{
+    color: white
+ 
+</style>
+</head>
+
+<body>
+
+<div class="container ">
+  
+  <h1 style="text-align: center; color: white ">Account Login</h1>
+  <div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+       <form action="{% url 'login' %}" method="POST">
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissable" role="alert">
+          <button type="button" class="close" data.dismissable="alert" aria-label="close">
+          <span aria-hidden="true">&times;</span> 
+          </button>
+        {{ message }}
+        </div> 
+        {% endfor %} 
+        {% csrf_token %}
+          
+          <div class="form-group" style="padding-top: 50px">
+            <label for="username" id="color">Username:</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+          </div>
+          <div class="form-group">
+            <label for="pwd" id="color">Password:</label>
+            <input type="password" class="form-control" id="passsword" placeholder="Enter password" name="password">
+          </div>
+          <div class="form-group form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="remember" ><p id="color">Remember me</p> 
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button><br><br>
+
+          <h6 style="color: dodgerblue;padding-left: 20px;">Don't Have an Account? <a href="{% url 'register' %}" >Register</a></h6>
+      </form>    
+  </div>
+  <div class="col-md-3"></div> 
+  </div>
+
+</div>
+</body>
+</html>

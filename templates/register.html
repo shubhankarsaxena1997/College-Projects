@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<style type="text/css">
+		body{
+			background-image: url({% static 'images/pic6.jpeg' %});
+    		background-size: cover;   		
+		}
+		#color{
+			color: white
+		}
+
+	</style>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<center><h1 id="color">Registration Form</h1></center>
+	<center><h6 id="color">Create your account. It's free and only takes a minute</h6></center><br>
+	{% for message in messages %}
+		   <div class="alert alert-{{message.tags}} alert-dismissable" role="alert">
+			 	<button type="button" class="close" data.dismissable="alert" aria-label="close">
+		   		<span aria-hidden="true">&times;</span>	
+		   		</button>
+		    	{{ message }}
+		    </div>	
+	{% endfor %}
+	
+	<div class="container">
+		<div class="row">
+		<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<form action="{% url 'register' %}" method="POST">
+						{% csrf_token %}
+						
+						<label id="color">First Name:</label>
+						<input type="text" name="first_name" class="form-control" placeholder="first name">
+
+						<label id="color" >Last Name:</label>
+						<input type="text" name="last_name" class="form-control" placeholder="last name">
+						
+						<label id="color">Email:</label>
+						<input type="email" name="email" class="form-control" placeholder="enter email">
+
+						<label id="color">Username:</label>
+						<input type="text" name="username" class="form-control" placeholder="enter username">
+
+						<label id="color">Password:</label>
+						<input type="Password" name="pswd1" class="form-control" placeholder="enter Password">
+
+						<label id="color">Confirm Password:</label>
+						<input type="password" name="pswd2" class="form-control"placeholder="confirm password" class="form-control"><br>
+
+						<button type="submit" class="btn btn-info" value="register">Register</button><br><br>
+						<h6 style="color: dodgerblue">Already have an account? <a href="{% url 'login' %}" id="color">Login</a></h6>
+					</form>
+				</div>
+			</div>
+		<div class="col-md-3"></div>
+	</div>
+	</div>
+</body>
+</html>

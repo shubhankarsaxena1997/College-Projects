@@ -1,0 +1,60 @@
+{% extends 'menu.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit user</title>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <center><h2>Edit User</h2></center><br><br>
+        <div class="row">
+            <div class="col-md-3" ></div>
+            <div class="col-md-6">
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissable" role="alert">
+                    <button type="button" class="close" data.dismissable="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span> 
+                    </button>
+                {{ message }}
+                </div>
+                {% endfor %}
+                <div class="form-group">
+
+                    <form action="{% url 'update_user_data' %}" method="POST">
+                        {% csrf_token %}
+
+                        {% for user_data in users %}
+                        <input type="hidden" value="{{user_data.id}}" name="user_id">
+                        <label>First Name:</label>
+                        <input type="text" name="first_name" class="form-control" placeholder="first name" value="{{user_data.first_name}}">
+
+                        <label>Last Name:</label>
+                        <input type="text" name="last_name" class="form-control" placeholder="last name"value="{{user_data.last_name}}">
+                        
+                        <label>Email:</label>
+                        <input type="email" name="email" class="form-control" placeholder="enter email"value="{{user_data.email}}">
+
+                        <label>Username:</label>
+                        <input type="text" name="username" class="form-control" placeholder="enter username"value="{{user_data.username}}"><br>
+
+                        <button type="submit" class="btn btn-info" style="width:200xpx;">Update Changes</button>
+
+                        {% endfor %}
+
+                    </form>                    
+                </div>
+            <div class="col-md-3"></div>    
+            </div>
+    </div>  
+</body>
+</html>
+{% endblock %}
